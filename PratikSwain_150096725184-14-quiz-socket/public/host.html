@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Control Deck — The Trivia Arena</title>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/host.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+</head>
+<body class="host-body">
+  <div class="noise-overlay"></div>
+
+  <!-- Main Broadcast Stage -->
+  <main class="broadcast-stage" id="broadcast-stage">
+
+    <!-- Top Broadcast Bar -->
+    <header class="broadcast-header">
+      <div class="header-left">
+        <span class="arena-logo">THE TRIVIA ARENA</span>
+        <span class="badge badge-gold" id="room-pin-badge">PIN: ----</span>
+      </div>
+      <div class="header-center" id="header-status-area">
+        <span class="badge badge-live" id="live-indicator"><span class="pulse-dot"></span> LIVE MATCH</span>
+      </div>
+      <div class="header-right">
+        <button class="sound-toggle btn-icon" id="sound-btn" title="Toggle Sound" aria-label="Toggle Sound">🔊</button>
+        <span class="player-count-pill badge" id="header-player-count">0 Players Connected</span>
+      </div>
+    </header>
+
+    <!-- SCREEN 1: LOBBY -->
+    <section class="screen active" id="screen-lobby">
+      <div class="lobby-hero">
+        <p class="lobby-eyebrow">JOIN AT <span class="lobby-url" id="lobby-url-text">localhost:3000/player.html</span></p>
+        <h1 class="lobby-title">Game Room PIN</h1>
+        
+        <div class="pin-billboard">
+          <div class="pin-display" id="lobby-pin">----</div>
+          <div class="pin-glow"></div>
+        </div>
+
+        <div class="lobby-actions">
+          <button class="btn btn-outline" id="copy-link-btn">
+            <span>📋</span> Copy Player Link
+          </button>
+          <button class="btn btn-gold" id="start-game-btn" disabled>
+            <span>▶</span> Launch Match (<span id="start-player-count">0</span> Players)
+          </button>
+        </div>
+      </div>
+
+      <div class="lobby-roster-container">
+        <div class="roster-header">
+          <h2>Contenders in the Arena</h2>
+          <span class="roster-count mono" id="roster-count-badge">0 REGISTERED</span>
+        </div>
+        <div class="roster-grid" id="roster-grid">
+          <!-- Dynamically populated roster cards -->
+          <div class="roster-empty" id="roster-empty-state">
+            <span class="waiting-spinner"></span>
+            <p>Awaiting challengers to enter the PIN...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: QUESTION ACTIVE -->
+    <section class="screen" id="screen-question">
+      <div class="question-topbar">
+        <span class="category-badge" id="q-category">Astrophysics & Space</span>
+        <span class="question-tracker mono" id="q-tracker">QUESTION 01 OF 10</span>
+        <div class="answered-pill badge" id="q-answered-pill">
+          <span class="mono" id="q-answered-count">0</span> / <span class="mono" id="q-total-count">0</span> ANSWERED
+        </div>
+      </div>
+
+      <div class="question-content">
+        <h1 class="question-headline" id="q-headline">Loading question...</h1>
+
+        <div class="timer-radial-container">
+          <svg class="timer-svg" viewBox="0 0 120 120">
+            <circle class="timer-track" cx="60" cy="60" r="54" />
+            <circle class="timer-progress" id="timer-circle" cx="60" cy="60" r="54" />
+          </svg>
+          <div class="timer-text mono" id="timer-sec">15</div>
+        </div>
+      </div>
+
+      <!-- 4 Option Cards -->
+      <div class="options-grid" id="q-options-grid">
+        <div class="option-card option-a" data-option="A">
+          <div class="option-marker marker-triangle">▲</div>
+          <div class="option-label" id="opt-text-A">Option A</div>
+          <div class="option-stat-bar" id="opt-stat-A"><div class="stat-fill"></div><span class="stat-count mono">0</span></div>
+        </div>
+        <div class="option-card option-b" data-option="B">
+          <div class="option-marker marker-diamond">◆</div>
+          <div class="option-label" id="opt-text-B">Option B</div>
+          <div class="option-stat-bar" id="opt-stat-B"><div class="stat-fill"></div><span class="stat-count mono">0</span></div>
+        </div>
+        <div class="option-card option-c" data-option="C">
+          <div class="option-marker marker-circle">●</div>
+          <div class="option-label" id="opt-text-C">Option C</div>
+          <div class="option-stat-bar" id="opt-stat-C"><div class="stat-fill"></div><span class="stat-count mono">0</span></div>
+        </div>
+        <div class="option-card option-d" data-option="D">
+          <div class="option-marker marker-square">■</div>
+          <div class="option-label" id="opt-text-D">Option D</div>
+          <div class="option-stat-bar" id="opt-stat-D"><div class="stat-fill"></div><span class="stat-count mono">0</span></div>
+        </div>
+      </div>
+
+      <!-- Explanation Card (Shown on Reveal) -->
+      <div class="reveal-explanation" id="reveal-explanation">
+        <div class="explanation-inner">
+          <span class="explanation-tag">VERDICT & CONTEXT</span>
+          <p id="explanation-text">Explanation text here...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: LEADERBOARD -->
+    <section class="screen" id="screen-leaderboard">
+      <div class="leaderboard-stage">
+        <div class="leaderboard-header">
+          <span class="stage-tag">STANDINGS</span>
+          <h1 class="leaderboard-title">Current Leaderboard</h1>
+          <p class="leaderboard-sub" id="lb-round-info">After Question 1 of 10</p>
+        </div>
+
+        <div class="leaderboard-container">
+          <div class="leaderboard-list" id="leaderboard-list">
+            <!-- Dynamic FLIP-animated leaderboard rows -->
+          </div>
+        </div>
+
+        <div class="leaderboard-controls">
+          <button class="btn btn-gold" id="btn-next-question">
+            <span>Next Question</span> <span>→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: FINAL WINNER PODIUM -->
+    <section class="screen" id="screen-podium">
+      <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+      
+      <div class="podium-stage">
+        <div class="podium-eyebrow">CHAMPIONSHIP CONCLUDED</div>
+        <h1 class="podium-title">Grand Champion</h1>
+
+        <!-- Winner Spotlight -->
+        <div class="winner-hero" id="winner-hero">
+          <div class="winner-crown">👑</div>
+          <div class="winner-name font-serif" id="winner-name">Alexander</div>
+          <div class="winner-score mono" id="winner-score">0 PTS</div>
+          <div class="winner-stats" id="winner-stats">Accuracy: 100% | Max Streak: 5</div>
+        </div>
+
+        <!-- Top 3 Podium -->
+        <div class="podium-pedestals" id="podium-pedestals">
+          <!-- Silver Rank 2 -->
+          <div class="pedestal pedestal-2" id="pedestal-2">
+            <div class="pedestal-player font-serif" id="podium-p2-name">-</div>
+            <div class="pedestal-score mono" id="podium-p2-score">0 pts</div>
+            <div class="pedestal-block block-silver">
+              <span class="pedestal-rank mono">2</span>
+            </div>
+          </div>
+
+          <!-- Gold Rank 1 -->
+          <div class="pedestal pedestal-1" id="pedestal-1">
+            <div class="pedestal-player font-serif" id="podium-p1-name">-</div>
+            <div class="pedestal-score mono" id="podium-p1-score">0 pts</div>
+            <div class="pedestal-block block-gold">
+              <span class="pedestal-rank mono">1</span>
+            </div>
+          </div>
+
+          <!-- Bronze Rank 3 -->
+          <div class="pedestal pedestal-3" id="pedestal-3">
+            <div class="pedestal-player font-serif" id="podium-p3-name">-</div>
+            <div class="pedestal-score mono" id="podium-p3-score">0 pts</div>
+            <div class="pedestal-block block-bronze">
+              <span class="pedestal-rank mono">3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Standings Table -->
+        <div class="final-roster-box">
+          <h3>Full Match Standings</h3>
+          <div class="final-list" id="final-standings-list"></div>
+        </div>
+
+        <div class="podium-actions">
+          <button class="btn btn-gold" id="btn-play-again" onclick="window.location.reload()">
+            <span>Host Another Match</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/socket-client.js"></script>
+  <script src="/js/host.js"></script>
+</body>
+</html>

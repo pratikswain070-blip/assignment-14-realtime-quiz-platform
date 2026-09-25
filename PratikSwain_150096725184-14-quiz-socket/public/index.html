@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Trivia Arena — Real-Time Multiplayer Trivia</title>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+  <style>
+    .landing-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .landing-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: var(--border-hairline);
+    }
+
+    .landing-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+    }
+
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 4rem 1rem;
+    }
+
+    .hero-tag {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      font-weight: 400;
+      line-height: 1.1;
+      max-width: 900px;
+      background: linear-gradient(180deg, #ffffff 40%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    /* Dual Action Cards */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 900px;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+      .landing-wrapper {
+        padding: 1.5rem;
+      }
+    }
+
+    .portal-card {
+      background: var(--bg-card);
+      border: var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: all var(--transition-normal);
+      backdrop-filter: blur(16px);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-gold);
+      box-shadow: 0 16px 40px var(--accent-gold-glow);
+    }
+
+    .portal-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      background: var(--bg-tertiary);
+      border: var(--border-gold-subtle);
+    }
+
+    .portal-card h2 {
+      font-size: 1.75rem;
+      font-weight: 500;
+    }
+
+    .portal-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .portal-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .features-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-top: var(--border-hairline);
+    }
+
+    @media (max-width: 768px) {
+      .features-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-gold-light);
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+
+  <div class="landing-wrapper">
+    <header class="landing-nav">
+      <span class="landing-logo">THE TRIVIA ARENA</span>
+      <div class="landing-status">
+        <span class="badge badge-gold"><span class="pulse-dot"></span> SERVER AUTHORITATIVE</span>
+      </div>
+    </header>
+
+    <main class="hero-section">
+      <span class="hero-tag">High-Stakes Live Multiplayer</span>
+      <h1 class="hero-title">Where Erudition Meets Real-Time Velocity</h1>
+      <p class="hero-desc">
+        A server-authoritative live trivia arena engineered for high stakes. Cast the stage to a big screen and compete from any mobile device.
+      </p>
+
+      <div class="portal-grid">
+        <!-- Host Portal -->
+        <a href="/host.html" class="portal-card" id="portal-host">
+          <div class="portal-icon">🏛️</div>
+          <h2>Host Broadcast Stage</h2>
+          <p>Launch a match room with a large glowing PIN, radial timer broadcast, live answer counters, and FLIP-animated leaderboard reveals.</p>
+          <div class="portal-cta">
+            <span>Launch Stage Deck</span> <span>→</span>
+          </div>
+        </a>
+
+        <!-- Player Portal -->
+        <a href="/player.html" class="portal-card" id="portal-player">
+          <div class="portal-icon">🎮</div>
+          <h2>Join as Player</h2>
+          <p>Connect with a 4-digit PIN, choose your challenger moniker, and answer on the tactile dark geometric gamepad in real time.</p>
+          <div class="portal-cta">
+            <span>Enter Match Gamepad</span> <span>→</span>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <footer class="features-strip">
+      <div class="feature-item">
+        <span class="feature-title">250ms Server Ticks</span>
+        <span class="feature-desc">All timers and scoring reside strictly on the server to guarantee zero client clock drift or tampering.</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-title">Dynamic Speed Scoring</span>
+        <span class="feature-desc">Deterministic points curve (500–1000 pts) with progressive streak multipliers calculated per round.</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-title">Editorial Luxury Polish</span>
+        <span class="feature-desc">Fraunces serif typography paired with JetBrains Mono tabular numerics and canvas particle confetti physics.</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

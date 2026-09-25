@@ -1,0 +1,105 @@
+/* ==========================================================================
+   DESIGN TOKENS — THE TRIVIA ARENA (Dark Editorial Luxury System)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette — Near-Black Warm Charcoal & Metallic Accents */
+  --bg-primary: #0a0908;
+  --bg-secondary: #12110f;
+  --bg-tertiary: #1a1815;
+  --bg-card: rgba(22, 20, 18, 0.75);
+  --bg-card-hover: rgba(32, 29, 25, 0.85);
+  --bg-glass: rgba(18, 17, 15, 0.65);
+  --bg-overlay: rgba(10, 9, 8, 0.88);
+
+  /* Metallic & Jewel Accents */
+  --accent-gold: #c9a15a;
+  --accent-gold-light: #e8c57e;
+  --accent-gold-dark: #967432;
+  --accent-gold-glow: rgba(201, 161, 90, 0.25);
+  --accent-gold-soft: rgba(201, 161, 90, 0.12);
+
+  --accent-garnet: #8a1f2b;
+  --accent-garnet-glow: rgba(138, 31, 43, 0.35);
+
+  --accent-emerald: #1e704e;
+  --accent-emerald-bright: #2ecc71;
+  --accent-emerald-glow: rgba(46, 204, 113, 0.3);
+
+  --accent-sapphire: #1b4d7e;
+  --accent-sapphire-bright: #3498db;
+  --accent-sapphire-glow: rgba(52, 152, 219, 0.3);
+
+  --accent-amethyst: #5b2c6f;
+  --accent-amethyst-bright: #9b59b6;
+  --accent-amethyst-glow: rgba(155, 89, 182, 0.3);
+
+  --accent-ruby: #a93226;
+  --accent-ruby-bright: #e74c3c;
+  --accent-ruby-glow: rgba(231, 76, 60, 0.3);
+
+  --accent-amber: #d35400;
+  --accent-amber-bright: #f39c12;
+
+  /* Typography Colors */
+  --text-primary: #f5f3ef;
+  --text-secondary: #b8b3a8;
+  --text-muted: #6e6a62;
+  --text-gold: #e8c57e;
+  --text-inverse: #0a0908;
+
+  /* Borders & Hairlines */
+  --border-hairline: 1px solid rgba(245, 243, 239, 0.08);
+  --border-gold-subtle: 1px solid rgba(201, 161, 90, 0.25);
+  --border-gold: 1px solid var(--accent-gold);
+  --border-light: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* Typography Families */
+  --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --font-serif-body: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Shadows & Depth */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 35px var(--accent-gold-glow);
+  --shadow-emerald-glow: 0 0 30px var(--accent-emerald-glow);
+  --shadow-ruby-glow: 0 0 30px var(--accent-ruby-glow);
+
+  /* Shape Colors for Option Pads */
+  --shape-triangle-bg: rgba(186, 73, 73, 0.15);
+  --shape-triangle-border: rgba(231, 76, 60, 0.4);
+  --shape-triangle-active: rgba(231, 76, 60, 0.9);
+
+  --shape-diamond-bg: rgba(41, 128, 185, 0.15);
+  --shape-diamond-border: rgba(52, 152, 219, 0.4);
+  --shape-diamond-active: rgba(52, 152, 219, 0.9);
+
+  --shape-circle-bg: rgba(214, 137, 16, 0.15);
+  --shape-circle-border: rgba(243, 156, 18, 0.4);
+  --shape-circle-active: rgba(243, 156, 18, 0.9);
+
+  --shape-square-bg: rgba(39, 174, 96, 0.15);
+  --shape-square-border: rgba(46, 204, 113, 0.4);
+  --shape-square-active: rgba(46, 204, 113, 0.9);
+
+  /* Transitions & Animation Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms var(--ease-out-expo);
+  --transition-screen: 500ms var(--ease-out-expo);
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}

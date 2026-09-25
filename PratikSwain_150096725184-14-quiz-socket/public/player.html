@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Player Game Pad — The Trivia Arena</title>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/player.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body class="player-body">
+  <div class="noise-overlay"></div>
+
+  <!-- Main Mobile Container -->
+  <div class="pad-container">
+
+    <!-- Persistent Top Player Header (Visible during gameplay) -->
+    <header class="player-header" id="player-header" style="display: none;">
+      <div class="player-header-left">
+        <span class="player-nickname mono" id="hdr-nickname">Player</span>
+        <span class="player-rank-pill badge" id="hdr-rank">#1</span>
+      </div>
+      <div class="player-header-right">
+        <span class="player-score-label">SCORE</span>
+        <span class="player-score-value mono" id="hdr-score">0</span>
+      </div>
+    </header>
+
+    <!-- SCREEN 1: JOIN ROOM -->
+    <section class="screen active" id="screen-join">
+      <div class="join-card">
+        <div class="join-masthead">
+          <span class="arena-logo">THE TRIVIA ARENA</span>
+          <h1 class="join-title">Enter Arena</h1>
+          <p class="join-subtitle">Enter the 4-digit PIN displayed on the host screen</p>
+        </div>
+
+        <form id="join-form" class="join-form" autocomplete="off">
+          <div class="form-group">
+            <label class="form-label">GAME PIN</label>
+            <div class="pin-inputs" id="pin-inputs">
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit mono" id="pin-1" required autofocus />
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit mono" id="pin-2" required />
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit mono" id="pin-3" required />
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit mono" id="pin-4" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nickname-input" class="form-label">CHALLENGER NICKNAME</label>
+            <input type="text" id="nickname-input" class="input-text" placeholder="e.g. Athena" maxlength="18" required />
+          </div>
+
+          <button type="submit" class="btn btn-gold btn-block" id="btn-join-arena">
+            <span>Enter Match</span> <span>→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: LOBBY WAITING -->
+    <section class="screen" id="screen-waiting">
+      <div class="waiting-card">
+        <div class="waiting-avatar" id="waiting-avatar">A</div>
+        <h2 class="waiting-title font-serif" id="waiting-nickname">Challenger</h2>
+        <div class="badge badge-gold" id="waiting-pin-badge">ROOM #----</div>
+
+        <div class="waiting-indicator">
+          <span class="pulse-dot"></span>
+          <p>You're in the arena! Keep your eyes on the host broadcast screen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: ACTIVE GAME PAD -->
+    <section class="screen" id="screen-gamepad">
+      <div class="pad-stage">
+        <div class="pad-status-bar">
+          <span class="badge" id="pad-q-index">QUESTION 1</span>
+          <div class="pad-timer-pill">
+            <span class="timer-mini-dot"></span>
+            <span class="mono" id="pad-timer-sec">15s</span>
+          </div>
+        </div>
+
+        <!-- 2x2 Geometric Option Cards -->
+        <div class="pad-grid" id="pad-grid">
+          <!-- Option A: Triangle -->
+          <button class="pad-btn pad-triangle" data-option="A" id="pad-btn-A">
+            <div class="pad-icon">▲</div>
+            <div class="pad-text" id="pad-text-A">Option A</div>
+            <div class="pad-ripple"></div>
+          </button>
+
+          <!-- Option B: Diamond -->
+          <button class="pad-btn pad-diamond" data-option="B" id="pad-btn-B">
+            <div class="pad-icon">◆</div>
+            <div class="pad-text" id="pad-text-B">Option B</div>
+            <div class="pad-ripple"></div>
+          </button>
+
+          <!-- Option C: Circle -->
+          <button class="pad-btn pad-circle" data-option="C" id="pad-btn-C">
+            <div class="pad-icon">●</div>
+            <div class="pad-text" id="pad-text-C">Option C</div>
+            <div class="pad-ripple"></div>
+          </button>
+
+          <!-- Option D: Square -->
+          <button class="pad-btn pad-square" data-option="D" id="pad-btn-D">
+            <div class="pad-icon">■</div>
+            <div class="pad-text" id="pad-text-D">Option D</div>
+            <div class="pad-ripple"></div>
+          </button>
+        </div>
+
+        <!-- Locked Waiting Overlay (Active after submitting answer) -->
+        <div class="pad-locked-overlay" id="pad-locked-overlay">
+          <div class="locked-card">
+            <div class="locked-spinner"></div>
+            <h3>Answer Locked</h3>
+            <p>Selected: <span class="mono bold" id="locked-choice-marker">Option A</span></p>
+            <span class="locked-sub">Awaiting conclusion of the round...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: ROUND RESULT REVEAL -->
+    <section class="screen" id="screen-result">
+      <div class="result-card" id="result-card">
+        <div class="result-icon" id="result-icon">✓</div>
+        <h1 class="result-title font-serif" id="result-title">Correct!</h1>
+        <div class="result-delta mono" id="result-delta">+950 PTS</div>
+        
+        <div class="result-streak" id="result-streak-box">
+          <span id="result-streak-text">🔥 2 Answer Streak</span>
+        </div>
+
+        <div class="result-summary">
+          <p id="result-explanation">Explanation text...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: FINAL PLAYER RESULTS -->
+    <section class="screen" id="screen-final">
+      <div class="final-card">
+        <div class="final-trophy" id="final-trophy">🏆</div>
+        <h1 class="final-title font-serif" id="final-rank-title">Grand Champion</h1>
+        <div class="final-rank-badge mono" id="final-rank-badge">RANK #1</div>
+        <div class="final-score mono" id="final-score-val">0 PTS</div>
+        
+        <div class="final-stats-grid">
+          <div class="stat-cell">
+            <span class="stat-label">CORRECT</span>
+            <span class="stat-val mono" id="final-stat-correct">0</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-label">MAX STREAK</span>
+            <span class="stat-val mono" id="final-stat-streak">0</span>
+          </div>
+        </div>
+
+        <button class="btn btn-gold btn-block" onclick="window.location.reload()">
+          <span>Play Again</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/socket-client.js"></script>
+  <script src="/js/player.js"></script>
+</body>
+</html>

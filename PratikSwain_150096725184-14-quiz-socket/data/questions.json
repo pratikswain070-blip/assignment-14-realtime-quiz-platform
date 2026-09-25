@@ -1,0 +1,142 @@
+[
+  {
+    "id": "q1",
+    "category": "Astrophysics & Space",
+    "question": "What is the boundary surrounding a black hole beyond which nothing, not even light, can escape called?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "The Ergosphere", "symbol": "triangle" },
+      { "id": "B", "text": "The Event Horizon", "symbol": "diamond" },
+      { "id": "C", "text": "The Roche Limit", "symbol": "circle" },
+      { "id": "D", "text": "The Chandrasekhar Boundary", "symbol": "square" }
+    ],
+    "correctOptionId": "B",
+    "explanation": "The event horizon marks the mathematical threshold where the gravitational escape velocity equals the speed of light."
+  },
+  {
+    "id": "q2",
+    "category": "Classical Architecture",
+    "question": "Which ancient marvel featured an unreinforced concrete dome that remains the largest of its kind in the world today?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Hagia Sophia in Istanbul", "symbol": "triangle" },
+      { "id": "B", "text": "The Parthenon in Athens", "symbol": "diamond" },
+      { "id": "C", "text": "The Pantheon in Rome", "symbol": "circle" },
+      { "id": "D", "text": "The Colosseum in Rome", "symbol": "square" }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Commissioned by Marcus Agrippa and rebuilt by Emperor Hadrian around 126 AD, the Pantheon's dome spans 43.3 meters without structural reinforcement."
+  },
+  {
+    "id": "q3",
+    "category": "World History & Cartography",
+    "question": "Which Portuguese navigator led the first expedition that successfully completed a global circumnavigation in 1522?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Ferdinand Magellan", "symbol": "triangle" },
+      { "id": "B", "text": "Vasco da Gama", "symbol": "diamond" },
+      { "id": "C", "text": "Bartolomeu Dias", "symbol": "circle" },
+      { "id": "D", "text": "Pedro Álvares Cabral", "symbol": "square" }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Though Magellan was killed in the Philippines in 1521, his expedition completed the voyage under Juan Sebastián Elcano aboard the Victoria."
+  },
+  {
+    "id": "q4",
+    "category": "Computing & Cryptography",
+    "question": "In 1936, Alan Turing introduced a theoretical machine that formalized the modern concept of algorithm in which seminal paper?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Computing Machinery and Intelligence", "symbol": "triangle" },
+      { "id": "B", "text": "On Computable Numbers", "symbol": "diamond" },
+      { "id": "C", "text": "A Mathematical Theory of Communication", "symbol": "circle" },
+      { "id": "D", "text": "The Chemical Basis of Morphogenesis", "symbol": "square" }
+    ],
+    "correctOptionId": "B",
+    "explanation": "'On Computable Numbers, with an Application to the Entscheidungsproblem' introduced universal computation and defined the limits of what computers can solve."
+  },
+  {
+    "id": "q5",
+    "category": "Fine Art & Renaissance",
+    "question": "Which Renaissance master painted the celebrated fresco 'The School of Athens' in the Apostolic Palace of the Vatican?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Leonardo da Vinci", "symbol": "triangle" },
+      { "id": "B", "text": "Michelangelo Buonarroti", "symbol": "diamond" },
+      { "id": "C", "text": "Raphael Sanzio", "symbol": "circle" },
+      { "id": "D", "text": "Sandro Botticelli", "symbol": "square" }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Raphael painted 'The School of Athens' between 1509 and 1511 as part of his commission to decorate the Stanze di Raffaello."
+  },
+  {
+    "id": "q6",
+    "category": "Geology & Earth Sciences",
+    "question": "What is the deepest known location on Earth's seabed, descending nearly 11,000 meters beneath the Pacific Ocean?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Challenger Deep", "symbol": "triangle" },
+      { "id": "B", "text": "Puerto Rico Trench", "symbol": "diamond" },
+      { "id": "C", "text": "Java Trench", "symbol": "circle" },
+      { "id": "D", "text": "Milwaukee Deep", "symbol": "square" }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Located at the southern end of the Mariana Trench, Challenger Deep reaches an estimated depth of 10,994 meters (36,070 feet)."
+  },
+  {
+    "id": "q7",
+    "category": "Literature & Drama",
+    "question": "Which Nobel laureate wrote the landmark 1953 existentialist play 'Waiting for Godot'?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Albert Camus", "symbol": "triangle" },
+      { "id": "B", "text": "Samuel Beckett", "symbol": "diamond" },
+      { "id": "C", "text": "Jean-Paul Sartre", "symbol": "circle" },
+      { "id": "D", "text": "Eugene O'Neill", "symbol": "square" }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Samuel Beckett originally wrote 'En attendant Godot' in French before translating it into English himself, defining the Theatre of the Absurd."
+  },
+  {
+    "id": "q8",
+    "category": "Cinema & Directing",
+    "question": "Who composed the iconic, recurring minimalist musical score for Stanley Kubrick's 1968 masterpiece '2001: A Space Odyssey'?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Richard Strauss ('Also sprach Zarathustra')", "symbol": "triangle" },
+      { "id": "B", "text": "Bernard Herrmann", "symbol": "diamond" },
+      { "id": "C", "text": "Ennio Morricone", "symbol": "circle" },
+      { "id": "D", "text": "Alex North", "symbol": "square" }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Kubrick discarded Alex North's original score in favor of classical pieces, famously opening with Richard Strauss's 1896 tone poem 'Also sprach Zarathustra'."
+  },
+  {
+    "id": "q9",
+    "category": "Molecular Biology",
+    "question": "Which British chemist and crystallographer produced 'Photo 51', which was critical in deciphering the double helix structure of DNA?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "Dorothy Hodgkin", "symbol": "triangle" },
+      { "id": "B", "text": "Rosalind Franklin", "symbol": "diamond" },
+      { "id": "C", "text": "Marie Curie", "symbol": "circle" },
+      { "id": "D", "text": "Barbara McClintock", "symbol": "square" }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Rosalind Franklin's X-ray diffraction image of DNA taken in May 1952 provided the crucial experimental evidence of the double-helical structure."
+  },
+  {
+    "id": "q10",
+    "category": "Economics & Game Theory",
+    "question": "Which mathematician formulated the concept of non-cooperative equilibrium in game theory, winning the Nobel Memorial Prize in 1994?",
+    "timeLimitMs": 15000,
+    "options": [
+      { "id": "A", "text": "John von Neumann", "symbol": "triangle" },
+      { "id": "B", "text": "John Forbes Nash Jr.", "symbol": "diamond" },
+      { "id": "C", "text": "Kenneth Arrow", "symbol": "circle" },
+      { "id": "D", "text": "Milton Friedman", "symbol": "square" }
+    ],
+    "correctOptionId": "B",
+    "explanation": "John Nash proved that in any finite game, there exists at least one equilibrium where no player has an incentive to unilaterally change their strategy."
+  }
+]
